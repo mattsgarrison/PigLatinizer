@@ -7,7 +7,7 @@ class PigLatinTranslator
   end
 
   def translation
-    return nil if !@word
+    return nil if !@word.present?
 
     begins_with_vowel? ? vowel_translation : consonant_translation
   end

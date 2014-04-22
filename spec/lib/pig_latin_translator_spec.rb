@@ -11,6 +11,13 @@ describe PigLatinTranslator do
       end
     end
 
+    context "when word is empty string" do
+      it "should return nil" do
+        translator.word = ""
+        translator.translation.should be_nil
+      end
+    end
+
     context "when word begins with vowel" do
       it "should call vowel_translation" do
         translator.word = "a"
