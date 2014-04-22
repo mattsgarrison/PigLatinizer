@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422013853) do
+ActiveRecord::Schema.define(version: 20140422020312) do
+
+  create_table "translations", force: true do |t|
+    t.integer "word_id"
+    t.string  "type"
+    t.string  "translated_word"
+  end
 
   create_table "words", force: true do |t|
-    t.string "word"
+    t.string  "word"
+    t.integer "parent_id"
   end
 
 end
