@@ -10,5 +10,18 @@ describe PigLatinTranslator do
         translator.translation.should be_nil
       end
     end
+
+    context "when word begins with vowel" do
+      it "should call vowel_translation" do
+        translator.word = "a"
+        translator.expects(:vowel_translation)
+        translator.translation
+      end
+
+      it "should return word with ay appened to the end" do
+        translator.word = "a"
+        translator.translation.should == "aay"
+      end
+    end
   end
 end
