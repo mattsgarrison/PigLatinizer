@@ -42,6 +42,23 @@ describe WordsController do
         post :create, word: { word: "hi" }
         flash[:notice].should == "Your word in Pig Latin is ihay"
       end
+
+      context "when word is new" do
+        it "should create new word" do
+          lambda {
+            post :create, word: { word: "hi" }
+          }.should change(Word, :count).by(1)
+        end
+      end
+
+      context "when word has been persisted" do
+        it "should not create new word" do
+          FactoryGirl.create(:word, word: "word")
+          lambda {
+            post :create, word: { word: "word" }
+          }.should change(Word, :count).by(0)
+        end
+      end
     end
   end
 end

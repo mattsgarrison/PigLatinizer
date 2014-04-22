@@ -5,7 +5,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    word = Word.create(word_params)
+    word = Word.find_or_create_by(word_params)
     if word.persisted?
       pig_translation = word.add_translation(:pig_latin)
       notice = "Your word in Pig Latin is #{pig_translation}"
