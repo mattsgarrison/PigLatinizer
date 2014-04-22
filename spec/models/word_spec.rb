@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Word do
   it {should validate_presence_of(:word) }
+  it {should have_many(:translations) }
 
   describe "format validations" do
     context "for word" do
