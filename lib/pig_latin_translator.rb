@@ -9,7 +9,7 @@ class PigLatinTranslator
   def translation
     return nil if !@word
 
-    begins_with_vowel? ? vowel_translation : nil
+    begins_with_vowel? ? vowel_translation : consonant_translation
   end
 
   private
@@ -20,5 +20,8 @@ class PigLatinTranslator
 
   def vowel_translation
     @word+"ay"
+  end
+
+  def consonant_translation
   end
 end

@@ -23,5 +23,13 @@ describe PigLatinTranslator do
         translator.translation.should == "aay"
       end
     end
+
+    context "when word doesn't begin with vowel" do
+      it "should call consonant translation" do
+        translator.word = "q"
+        translator.expects(:consonant_translation)
+        translator.translation
+      end
+    end
   end
 end
