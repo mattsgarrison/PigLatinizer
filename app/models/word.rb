@@ -11,8 +11,8 @@ class Word < ActiveRecord::Base
   def add_translation(type)
     case type
     when :pig_latin
-      translator = PigLatinTranslator.new(nil)
-      translation = self.translations.create(translated_word: translator.translation, type: "PigLatin")
+      translator = PigLatinTranslator.new(word)
+      translation = self.translations.pig_latin.create(translated_word: translator.translation)
       translation.try(:translated_word)
     else
       "This is not a valid translation type"

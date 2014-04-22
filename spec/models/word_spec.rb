@@ -38,6 +38,16 @@ describe Word do
           }.should change(word.translations.pig_latin, :count).by(0)
         end
       end
+
+      context "when word is valid" do
+        it "should return translated word" do
+          word.stubs(:word).returns "hi"
+          correct_response = "ihay"
+          lambda {
+            word.add_translation(:pig_latin).should == correct_response
+          }.should change(word.translations.pig_latin, :count).by(1)
+        end
+      end
     end
   end
 end
