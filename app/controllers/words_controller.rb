@@ -13,7 +13,7 @@ class WordsController < ApplicationController
       notice = "Your word was invalid"
     end
 
-    redirect_to root_path, notice: notice
+    redirect_to new_word_path, notice: notice
   end
 
   private

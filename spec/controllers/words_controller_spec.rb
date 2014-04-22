@@ -9,6 +9,7 @@ describe WordsController do
     end
 
     it "should init word object" do
+      get :new
       assigns(:word).should be_a(Word)
     end
   end
@@ -39,7 +40,7 @@ describe WordsController do
 
       it "should return pig latin translation in flash" do
         post :create, word: { word: "hi" }
-        flash[:notice].should == "ihay"
+        flash[:notice].should == "Your word in Pig Latin is ihay"
       end
     end
   end
