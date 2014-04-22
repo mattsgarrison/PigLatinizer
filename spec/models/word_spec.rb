@@ -19,4 +19,14 @@ describe Word do
       end
     end
   end
+
+  describe :add_translation do
+    let(:word) { FactoryGirl.create(:word) }
+
+    context "when translation isn't valid type" do
+      it "should return that it isn't a valid type" do
+        word.add_translation(nil).should == "This is not a valid translation type"
+      end
+    end
+  end
 end
