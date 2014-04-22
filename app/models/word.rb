@@ -13,7 +13,7 @@ class Word < ActiveRecord::Base
     case type
     when :pig_latin
       translator = PigLatinTranslator.new(word)
-      translation = self.translations.pig_latin.create(translated_word: translator.translation)
+      translation = self.translations.pig_latin.find_or_create_by(translated_word: translator.translation)
       translation.try(:translated_word)
     else
       "This is not a valid translation type"

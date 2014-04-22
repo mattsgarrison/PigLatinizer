@@ -44,9 +44,24 @@ describe Word do
         it "should return translated word" do
           word.stubs(:word).returns "hi"
           correct_response = "ihay"
-          lambda {
-            word.add_translation(:pig_latin).should == correct_response
-          }.should change(word.translations.pig_latin, :count).by(1)
+          word.add_translation(:pig_latin).should == correct_response
+        end
+
+        context "when translation is new" do
+          it "should create new pig latin translation" do
+            lambda {
+              word.add_translation(:pig_latin)
+            }.should change(word.translations.pig_latin, :count).by(1)
+          end
+        end
+
+        context "when translation exists" do
+          it "should not create new translation" do
+            word.add_translation(:pig_latin)
+            lambda {
+              word.add_translation(:pig_latin)
+            }.should change(word.translations.pig_latin, :count).by(0)
+          end
         end
       end
     end
