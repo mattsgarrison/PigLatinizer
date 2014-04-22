@@ -1,0 +1,7 @@
+<h4><%= flash[:notice]%></h4>
+
+<%= form_for @word do |f| %>
+  <%= f.label :word %>
+  <%= f.text_field :word %>
+  <%= f.submit %>
+<% end %>
