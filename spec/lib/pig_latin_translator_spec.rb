@@ -31,9 +31,9 @@ describe PigLatinTranslator do
         translator.translation
       end
 
-      it "should move consonant to end of word" do
+      it "should move consonant to end of word and add ay" do
         translator.word = "hi"
-        translator.translation.should == "ih"
+        translator.translation.should == "ihay"
       end
     end
   end
