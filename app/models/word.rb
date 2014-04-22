@@ -1,5 +1,9 @@
 class Word < ActiveRecord::Base
-  has_many :translations
+  has_many :translations do
+    def pig_latin
+      where(type: "PigLatin")
+    end
+  end
 
   validates_presence_of :word
   validates_format_of :word, with: /\A[a-zA-Z]+\z/
@@ -7,6 +11,9 @@ class Word < ActiveRecord::Base
   def add_translation(type)
     case type
     when :pig_latin
+      translator = PigLatinTranslator.new(nil)
+      translation = self.translations.create(translated_word: translator.translation, type: "PigLatin")
+      translation.try(:translated_word)
     else
       "This is not a valid translation type"
     end

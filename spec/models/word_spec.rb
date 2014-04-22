@@ -28,5 +28,16 @@ describe Word do
         word.add_translation(nil).should == "This is not a valid translation type"
       end
     end
+
+    context "when translation is pig_latin" do
+      context "when word isn't valid" do
+        it "should return nil" do
+          word.stubs(:word).returns nil
+          lambda {
+            word.add_translation(:pig_latin).should == nil
+          }.should change(word.translations.pig_latin, :count).by(0)
+        end
+      end
+    end
   end
 end
