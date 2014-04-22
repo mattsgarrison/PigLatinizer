@@ -30,6 +30,11 @@ describe PigLatinTranslator do
         translator.expects(:consonant_translation)
         translator.translation
       end
+
+      it "should move consonant to end of word" do
+        translator.word = "hi"
+        translator.translation.should == "ih"
+      end
     end
   end
 end

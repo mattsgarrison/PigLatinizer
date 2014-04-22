@@ -23,5 +23,6 @@ class PigLatinTranslator
   end
 
   def consonant_translation
+    @word << @word.slice!(0)
   end
 end
